@@ -6,7 +6,7 @@ Summary:	.NET language bindings for GNOME
 Summary(pl):	Wi±zania GNOME dla .NET
 Name:		dotnet-gnome-sharp
 Version:	2.15.0
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Development/Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-sharp/2.15/gnome-sharp-%{version}.tar.bz2
@@ -33,6 +33,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(monoautodeps)
 BuildRequires:	rpm-perlprov
 BuildRequires:	vte-devel >= 0.13.5
+Obsoletes:	dotnet-gtk-sharp2-gnome
 Obsoletes:	gtk-sharp2
 Requires:	gnome-panel-libs >= 2.15.91
 Requires:	gnome-vfs2-libs >= 2.15.91
@@ -57,6 +58,7 @@ Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	monodoc
 Requires:	which
+Obsoletes:	dotnet-gtk-sharp2-gnome-devel
 Obsoletes:	gtk-sharp2-devel
 
 %description devel
@@ -72,6 +74,7 @@ Summary:	Static gtk-sharp libraries
 Summary(pl):	Biblioteki statyczne gtk-sharp
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
+Obsoletes:	dotnet-gtk-sharp2-gnome-static
 
 %description static
 Static gnome-sharp libraries.
