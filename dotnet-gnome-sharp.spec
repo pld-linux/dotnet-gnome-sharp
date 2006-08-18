@@ -1,6 +1,6 @@
 #
-%include	/usr/lib/rpm/macros.perl
 %include	/usr/lib/rpm/macros.mono
+%include	/usr/lib/rpm/macros.perl
 #
 Summary:	.NET language bindings for GNOME
 Summary(pl):	Wi±zania GNOME dla .NET
@@ -42,6 +42,7 @@ Requires:	libart_lgpl >= 2.2.0
 Requires:	librsvg >= 1:2.15.90
 Requires:	mono >= 1.1.16.1
 Requires:	vte >= 0.13.5
+ExclusiveArch:	%{ix86} %{x8664} arm hppa ia64 ppc s390 s390x sparc sparcv9 sparc64
 ExcludeArch:	i386
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
