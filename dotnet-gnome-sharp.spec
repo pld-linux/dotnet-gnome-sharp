@@ -8,7 +8,7 @@ Name:		dotnet-gnome-sharp
 Version:	2.15.0
 Release:	2
 License:	LGPL
-Group:		Development/Libraries
+Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-sharp/2.15/gnome-sharp-%{version}.tar.bz2
 # Source0-md5:	757734d783df2cad2c30bff122acd774
 Patch0:		%{name}-destdir.patch
