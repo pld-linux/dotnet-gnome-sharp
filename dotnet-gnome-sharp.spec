@@ -5,20 +5,20 @@
 Summary:	.NET language bindings for GNOME
 Summary(pl):	Wi±zania GNOME dla .NET
 Name:		dotnet-gnome-sharp
-Version:	2.15.0
-Release:	2
+Version:	2.16.0
+Release:	1
 License:	LGPL
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-sharp/2.15/gnome-sharp-%{version}.tar.bz2
-# Source0-md5:	757734d783df2cad2c30bff122acd774
+Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-sharp/2.16/gnome-sharp-%{version}.tar.bz2
+# Source0-md5:	09034669acec52f9d9818d9a31c032d5
 Patch0:		%{name}-destdir.patch
 Patch1:		%{name}-mint.patch
 URL:		http://gtk-sharp.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	dotnet-gtk-sharp2-devel >= 2.9.0
+BuildRequires:	dotnet-gtk-sharp2-devel >= 2.10.0
 BuildRequires:	gnome-panel-devel >= 2.15.91
-BuildRequires:	gtkhtml-devel >= 3.11.91
+BuildRequires:	gtkhtml-devel >= 3.11.92
 BuildRequires:	libart_lgpl-devel >= 2.2.0
 BuildRequires:	libgnomecanvas-devel >= 2.14.0
 BuildRequires:	libgnomeprintui-devel >= 2.12.1
@@ -32,16 +32,16 @@ BuildRequires:	ncurses-devel
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(monoautodeps)
 BuildRequires:	rpm-perlprov
-BuildRequires:	vte-devel >= 0.13.5
+BuildRequires:	vte-devel >= 0.13.6
 Obsoletes:	dotnet-gtk-sharp2-gnome
 Obsoletes:	gtk-sharp2
 Requires:	gnome-panel-libs >= 2.15.91
-Requires:	gnome-vfs2-libs >= 2.15.91
-Requires:	gtkhtml >= 3.11.91
+Requires:	gnome-vfs2-libs >= 2.15.92
+Requires:	gtkhtml >= 3.11.92
 Requires:	libart_lgpl >= 2.2.0
 Requires:	librsvg >= 1:2.15.90
 Requires:	mono >= 1.1.16.1
-Requires:	vte >= 0.13.5
+Requires:	vte >= 0.13.6
 ExclusiveArch:	%{ix86} %{x8664} arm hppa ia64 ppc s390 s390x sparc sparcv9 sparc64
 ExcludeArch:	i386
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
