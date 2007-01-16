@@ -6,13 +6,14 @@ Summary:	.NET language bindings for GNOME
 Summary(pl):	Wi±zania GNOME dla .NET
 Name:		dotnet-gnome-sharp
 Version:	2.16.0
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-sharp/2.16/gnome-sharp-%{version}.tar.bz2
 # Source0-md5:	09034669acec52f9d9818d9a31c032d5
 Patch0:		%{name}-destdir.patch
 Patch1:		%{name}-mint.patch
+Patch2:		%{name}-automake.patch
 URL:		http://gtk-sharp.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -87,6 +88,7 @@ Biblioteki statyczne gnome-sharp.
 %setup -q -n gnome-sharp-%{version}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %{__libtoolize}

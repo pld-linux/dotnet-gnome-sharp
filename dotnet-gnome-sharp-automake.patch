@@ -1,0 +1,11 @@
+--- gnome-sharp-2.16.0/sample/gconf/Makefile.am~	2006-08-21 18:37:25.000000000 +0200
++++ gnome-sharp-2.16.0/sample/gconf/Makefile.am	2007-01-16 12:10:18.000000000 +0100
+@@ -24,7 +24,7 @@
+ Settings.cs: $(SCHEMA)
+ 	MONO_PATH=$(top_builddir)/gconf/GConf/gconf-sharp.dll:${MONO_PATH} $(RUNTIME) $(GCONFDIR)/tools/gconfsharp-schemagen.exe Sample $(SCHEMA) > Settings.cs
+ 
+-install-hook: 
++install-data-hook: 
+ 	GCONF_CONFIG_SOURCE="" gconftool-2 --makefile-install-rule $(SCHEMA)
+ 
+ CLEANFILES = sample.exe Settings.cs
