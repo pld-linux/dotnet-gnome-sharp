@@ -3,7 +3,7 @@
 %include	/usr/lib/rpm/macros.perl
 #
 Summary:	.NET language bindings for GNOME
-Summary(pl):	Wi±zania GNOME dla .NET
+Summary(pl.UTF-8):   WiÄ…zania GNOME dla .NET
 Name:		dotnet-gnome-sharp
 Version:	2.16.0
 Release:	2
@@ -50,12 +50,12 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 This package provides bindings for .NET to GNOME libraries.
 
-%description -l pl
-Pakiet ten dostarcza wi±zania dla .NET do bibliotek z GNOME.
+%description -l pl.UTF-8
+Pakiet ten dostarcza wiÄ…zania dla .NET do bibliotek z GNOME.
 
 %package devel
 Summary:	Development part of GNOME#
-Summary(pl):	Czê¶æ dla programistów GNOME#
+Summary(pl.UTF-8):   CzÄ™Å›Ä‡ dla programistÃ³w GNOME#
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	monodoc
@@ -67,13 +67,13 @@ Obsoletes:	gtk-sharp2-devel
 Tools (C source parser and C# code generator) and documentation for
 developing applications using GNOME#.
 
-%description devel -l pl
-Narzêdzia (parser kodu C oraz generator kodu C#) i dokumentacja
-potrzebne przy tworzeniu aplikacji korzystaj±cych z GNOME#.
+%description devel -l pl.UTF-8
+NarzÄ™dzia (parser kodu C oraz generator kodu C#) i dokumentacja
+potrzebne przy tworzeniu aplikacji korzystajÄ…cych z GNOME#.
 
 %package static
 Summary:	Static gtk-sharp libraries
-Summary(pl):	Biblioteki statyczne gtk-sharp
+Summary(pl.UTF-8):   Biblioteki statyczne gtk-sharp
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Obsoletes:	dotnet-gtk-sharp2-gnome-static
@@ -81,7 +81,7 @@ Obsoletes:	dotnet-gtk-sharp2-gnome-static
 %description static
 Static gnome-sharp libraries.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Biblioteki statyczne gnome-sharp.
 
 %prep
