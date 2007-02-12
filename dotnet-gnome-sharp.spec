@@ -3,7 +3,7 @@
 %include	/usr/lib/rpm/macros.perl
 #
 Summary:	.NET language bindings for GNOME
-Summary(pl.UTF-8):   Wiązania GNOME dla .NET
+Summary(pl.UTF-8):	Wiązania GNOME dla .NET
 Name:		dotnet-gnome-sharp
 Version:	2.16.0
 Release:	2
@@ -55,7 +55,7 @@ Pakiet ten dostarcza wiązania dla .NET do bibliotek z GNOME.
 
 %package devel
 Summary:	Development part of GNOME#
-Summary(pl.UTF-8):   Część dla programistów GNOME#
+Summary(pl.UTF-8):	Część dla programistów GNOME#
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	monodoc
@@ -73,7 +73,7 @@ potrzebne przy tworzeniu aplikacji korzystających z GNOME#.
 
 %package static
 Summary:	Static gtk-sharp libraries
-Summary(pl.UTF-8):   Biblioteki statyczne gtk-sharp
+Summary(pl.UTF-8):	Biblioteki statyczne gtk-sharp
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Obsoletes:	dotnet-gtk-sharp2-gnome-static
