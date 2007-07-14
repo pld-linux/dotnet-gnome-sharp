@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_with	gtkhtml		# gtkhtml bindings (broken)
+%bcond_without	gtkhtml		# gtkhtml bindings
 #
 %include	/usr/lib/rpm/macros.mono
 %include	/usr/lib/rpm/macros.perl
@@ -17,12 +17,13 @@ Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-sharp/2.16/gnome-sharp-%{v
 Patch0:		%{name}-destdir.patch
 Patch1:		%{name}-mint.patch
 Patch2:		%{name}-automake.patch
+Patch3:		%{name}-gtkhtml.patch
 URL:		http://gtk-sharp.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	dotnet-gtk-sharp2-devel >= 2.10.0
 BuildRequires:	gnome-panel-devel >= 2.15.91
-%{?with_gtkhtml:BuildRequires:	gtkhtml-devel >= 3.11.92}
+%{?with_gtkhtml:BuildRequires:	gtkhtml-devel >= 3.14.0}
 BuildRequires:	libart_lgpl-devel >= 2.2.0
 BuildRequires:	libgnomecanvas-devel >= 2.14.0
 BuildRequires:	libgnomeprintui-devel >= 2.12.1
@@ -92,6 +93,7 @@ Biblioteki statyczne gnome-sharp.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 %{__libtoolize}
@@ -100,7 +102,7 @@ Biblioteki statyczne gnome-sharp.
 %{__automake}
 %{__autoconf}
 %configure
-%{__make}
+%{__make} -j1
 
 %install
 rm -rf $RPM_BUILD_ROOT
