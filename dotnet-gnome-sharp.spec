@@ -6,7 +6,7 @@ Summary:	.NET language bindings for GNOME
 Summary(pl.UTF-8):	Wiązania GNOME dla .NET
 Name:		dotnet-gnome-sharp
 Version:	2.20.0
-Release:	0.1
+Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-sharp/2.20/gnome-sharp-%{version}.tar.bz2
@@ -111,41 +111,37 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/gconfsharp2-schemagen
 %attr(755,root,root) %{_libdir}/libgnomesharpglue-2.so
-%attr(755,root,root) %{_libdir}/libvtesharpglue-2.so
 %attr(755,root,root) %{_prefix}/lib/gtk-sharp-2.0/gconfsharp-schemagen.exe
 %{_libdir}/libgnomesharpglue-2.la
-%{_libdir}/libvtesharpglue-2.la
 %{_prefix}/lib/mono/gac/art-sharp
 %{_prefix}/lib/mono/gac/gconf-sharp
 %{_prefix}/lib/mono/gac/gconf-sharp-peditors
 %{_prefix}/lib/mono/gac/gnome-sharp
 %{_prefix}/lib/mono/gac/gnome-vfs-sharp
-%{_prefix}/lib/mono/gac/rsvg-sharp
-%{_prefix}/lib/mono/gac/vte-sharp
 
 %{_prefix}/lib/mono/gac/policy.2.4.art-sharp
 %{_prefix}/lib/mono/gac/policy.2.4.gconf-sharp
 %{_prefix}/lib/mono/gac/policy.2.4.gconf-sharp-peditors
 %{_prefix}/lib/mono/gac/policy.2.4.gnome-sharp
 %{_prefix}/lib/mono/gac/policy.2.4.gnome-vfs-sharp
-%{_prefix}/lib/mono/gac/policy.2.4.rsvg-sharp
-%{_prefix}/lib/mono/gac/policy.2.4.vte-sharp
 
 %{_prefix}/lib/mono/gac/policy.2.6.art-sharp
 %{_prefix}/lib/mono/gac/policy.2.6.gconf-sharp
 %{_prefix}/lib/mono/gac/policy.2.6.gconf-sharp-peditors
 %{_prefix}/lib/mono/gac/policy.2.6.gnome-sharp
 %{_prefix}/lib/mono/gac/policy.2.6.gnome-vfs-sharp
-%{_prefix}/lib/mono/gac/policy.2.6.rsvg-sharp
-%{_prefix}/lib/mono/gac/policy.2.6.vte-sharp
 
 %{_prefix}/lib/mono/gac/policy.2.8.art-sharp
 %{_prefix}/lib/mono/gac/policy.2.8.gconf-sharp
 %{_prefix}/lib/mono/gac/policy.2.8.gconf-sharp-peditors
 %{_prefix}/lib/mono/gac/policy.2.8.gnome-sharp
 %{_prefix}/lib/mono/gac/policy.2.8.gnome-vfs-sharp
-%{_prefix}/lib/mono/gac/policy.2.8.rsvg-sharp
-%{_prefix}/lib/mono/gac/policy.2.8.vte-sharp
+
+%{_prefix}/lib/mono/gac/policy.2.16.art-sharp
+%{_prefix}/lib/mono/gac/policy.2.16.gconf-sharp
+%{_prefix}/lib/mono/gac/policy.2.16.gconf-sharp-peditors
+%{_prefix}/lib/mono/gac/policy.2.16.gnome-sharp
+%{_prefix}/lib/mono/gac/policy.2.16.gnome-vfs-sharp
 
 %files devel
 %defattr(644,root,root,755)
@@ -154,24 +150,42 @@ rm -rf $RPM_BUILD_ROOT
 %{_prefix}/lib/mono/gtk-sharp-2.0/gconf-sharp-peditors.dll
 %{_prefix}/lib/mono/gtk-sharp-2.0/gnome-sharp.dll
 %{_prefix}/lib/mono/gtk-sharp-2.0/gnome-vfs-sharp.dll
-%{_prefix}/lib/mono/gtk-sharp-2.0/rsvg-sharp.dll
-%{_prefix}/lib/mono/gtk-sharp-2.0/vte-sharp.dll
+
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.4.art-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.4.gconf-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.4.gconf-sharp-peditors.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.4.gnome-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.4.gnome-vfs-sharp.dll
+
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.6.art-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.6.gconf-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.6.gconf-sharp-peditors.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.6.gnome-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.6.gnome-vfs-sharp.dll
+
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.8.art-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.8.gconf-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.8.gconf-sharp-peditors.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.8.gnome-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.8.gnome-vfs-sharp.dll
+
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.16.art-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.16.gconf-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.16.gconf-sharp-peditors.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.16.gnome-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.16.gnome-vfs-sharp.dll
 
 %{_datadir}/gapi-2.0/art-api.xml
 %{_datadir}/gapi-2.0/gnome-api.xml
 %{_datadir}/gapi-2.0/gnome-vfs-api.xml
-%{_datadir}/gapi-2.0/rsvg-api.xml
-%{_datadir}/gapi-2.0/vte-api.xml
 
 %{_examplesdir}/%{name}-%{version}
 %{_pkgconfigdir}/art-sharp-2.0.pc
 %{_pkgconfigdir}/gconf-sharp-2.0.pc
 %{_pkgconfigdir}/gnome-sharp-2.0.pc
+%{_pkgconfigdir}/gconf-sharp-peditors-2.0.pc
 %{_pkgconfigdir}/gnome-vfs-sharp-2.0.pc
-%{_pkgconfigdir}/rsvg-sharp-2.0.pc
-%{_pkgconfigdir}/vte-sharp-2.0.pc
 
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libgnomesharpglue-2.a
-%{_libdir}/libvtesharpglue-2.a
