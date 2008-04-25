@@ -6,7 +6,7 @@ Summary:	.NET language bindings for GNOME
 Summary(pl.UTF-8):	Wiązania GNOME dla .NET
 Name:		dotnet-gnome-sharp
 Version:	2.20.0
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-sharp/2.20/gnome-sharp-%{version}.tar.bz2
@@ -16,7 +16,7 @@ Patch1:		%{name}-mint.patch
 URL:		http://gtk-sharp.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	dotnet-gtk-sharp2-devel >= 2.10.0
+BuildRequires:	dotnet-gtk-sharp2-devel >= 2.12.0
 BuildRequires:	gnome-panel-devel >= 2.15.91
 BuildRequires:	libart_lgpl-devel >= 2.2.0
 BuildRequires:	libgnomecanvas-devel >= 2.14.0
