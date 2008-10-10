@@ -5,37 +5,33 @@
 Summary:	.NET language bindings for GNOME
 Summary(pl.UTF-8):	Wiązania GNOME dla .NET
 Name:		dotnet-gnome-sharp
-Version:	2.20.0
-Release:	2
-License:	LGPL
+Version:	2.24.0
+Release:	1
+License:	LGPL v2+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-sharp/2.20/gnome-sharp-%{version}.tar.bz2
-# Source0-md5:	1cdb85652a6504afe6fad569daa901ee
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-sharp/2.24/gnome-sharp-%{version}.tar.bz2
+# Source0-md5:	30af2dfb153f417e44b5ac80501685ca
 Patch0:		%{name}-destdir.patch
 Patch1:		%{name}-mint.patch
 URL:		http://gtk-sharp.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	dotnet-gtk-sharp2-devel >= 2.12.0
-BuildRequires:	gnome-panel-devel >= 2.15.91
-BuildRequires:	libart_lgpl-devel >= 2.2.0
-BuildRequires:	libgnomecanvas-devel >= 2.14.0
-BuildRequires:	libgnomeprintui-devel >= 2.12.1
-BuildRequires:	libgnomeui-devel >= 2.15.91
+BuildRequires:	dotnet-gtk-sharp2-devel >= 2.12.2
+BuildRequires:	gnome-vfs2-devel >= 2.24.0
+BuildRequires:	gtk+2-devel >= 2:2.14.0
+BuildRequires:	libart_lgpl-devel >= 2.3.20
+BuildRequires:	libgnomecanvas-devel >= 2.20.0
+BuildRequires:	libgnomeui-devel >= 2.24.0
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel >= 1:2.6.26
 BuildRequires:	mono-csharp >= 1.1.16.1
 BuildRequires:	monodoc >= 1.1.16
-BuildRequires:	ncurses-devel
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(monoautodeps)
-BuildRequires:	rpm-perlprov
+Requires:	gnome-vfs2-libs >= 2.24.0
+Requires:	libart_lgpl >= 2.3.20
+Requires:	mono >= 1.1.16.1
 Obsoletes:	dotnet-gtk-sharp2-gnome
 Obsoletes:	gtk-sharp2
-Requires:	gnome-panel-libs >= 2.15.91
-Requires:	gnome-vfs2-libs >= 2.15.92
-Requires:	libart_lgpl >= 2.2.0
-Requires:	mono >= 1.1.16.1
 ExclusiveArch:	%{ix86} %{x8664} arm hppa ia64 ppc s390 s390x sparc sparcv9
 ExcludeArch:	i386
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -85,11 +81,11 @@ Biblioteki statyczne gnome-sharp.
 %build
 %{__libtoolize}
 %{__aclocal}
+%{__autoconf}
 %{__autoheader}
 %{__automake}
-%{__autoconf}
 %configure
-%{__make} -j1
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -119,30 +115,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_prefix}/lib/mono/gac/gnome-sharp
 %{_prefix}/lib/mono/gac/gnome-vfs-sharp
 
-%{_prefix}/lib/mono/gac/policy.2.4.art-sharp
-%{_prefix}/lib/mono/gac/policy.2.4.gconf-sharp
-%{_prefix}/lib/mono/gac/policy.2.4.gconf-sharp-peditors
-%{_prefix}/lib/mono/gac/policy.2.4.gnome-sharp
-%{_prefix}/lib/mono/gac/policy.2.4.gnome-vfs-sharp
-
-%{_prefix}/lib/mono/gac/policy.2.6.art-sharp
-%{_prefix}/lib/mono/gac/policy.2.6.gconf-sharp
-%{_prefix}/lib/mono/gac/policy.2.6.gconf-sharp-peditors
-%{_prefix}/lib/mono/gac/policy.2.6.gnome-sharp
-%{_prefix}/lib/mono/gac/policy.2.6.gnome-vfs-sharp
-
-%{_prefix}/lib/mono/gac/policy.2.8.art-sharp
-%{_prefix}/lib/mono/gac/policy.2.8.gconf-sharp
-%{_prefix}/lib/mono/gac/policy.2.8.gconf-sharp-peditors
-%{_prefix}/lib/mono/gac/policy.2.8.gnome-sharp
-%{_prefix}/lib/mono/gac/policy.2.8.gnome-vfs-sharp
-
-%{_prefix}/lib/mono/gac/policy.2.16.art-sharp
-%{_prefix}/lib/mono/gac/policy.2.16.gconf-sharp
-%{_prefix}/lib/mono/gac/policy.2.16.gconf-sharp-peditors
-%{_prefix}/lib/mono/gac/policy.2.16.gnome-sharp
-%{_prefix}/lib/mono/gac/policy.2.16.gnome-vfs-sharp
-
 %files devel
 %defattr(644,root,root,755)
 %{_prefix}/lib/mono/gtk-sharp-2.0/art-sharp.dll
@@ -150,30 +122,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_prefix}/lib/mono/gtk-sharp-2.0/gconf-sharp-peditors.dll
 %{_prefix}/lib/mono/gtk-sharp-2.0/gnome-sharp.dll
 %{_prefix}/lib/mono/gtk-sharp-2.0/gnome-vfs-sharp.dll
-
-%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.4.art-sharp.dll
-%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.4.gconf-sharp.dll
-%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.4.gconf-sharp-peditors.dll
-%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.4.gnome-sharp.dll
-%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.4.gnome-vfs-sharp.dll
-
-%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.6.art-sharp.dll
-%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.6.gconf-sharp.dll
-%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.6.gconf-sharp-peditors.dll
-%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.6.gnome-sharp.dll
-%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.6.gnome-vfs-sharp.dll
-
-%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.8.art-sharp.dll
-%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.8.gconf-sharp.dll
-%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.8.gconf-sharp-peditors.dll
-%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.8.gnome-sharp.dll
-%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.8.gnome-vfs-sharp.dll
-
-%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.16.art-sharp.dll
-%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.16.gconf-sharp.dll
-%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.16.gconf-sharp-peditors.dll
-%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.16.gnome-sharp.dll
-%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.16.gnome-vfs-sharp.dll
 
 %{_datadir}/gapi-2.0/art-api.xml
 %{_datadir}/gapi-2.0/gnome-api.xml
