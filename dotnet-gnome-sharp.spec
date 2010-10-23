@@ -5,12 +5,12 @@
 Summary:	.NET language bindings for GNOME
 Summary(pl.UTF-8):	Wiązania GNOME dla .NET
 Name:		dotnet-gnome-sharp
-Version:	2.24.1
-Release:	3
+Version:	2.24.2
+Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-sharp/2.24/gnome-sharp-%{version}.tar.bz2
-# Source0-md5:	408f83f790a5189bcf76ea9299bc6410
+# Source0-md5:	3b38f53960c736d4afb8f04204efe98b
 Patch0:		%{name}-destdir.patch
 Patch1:		%{name}-mint.patch
 URL:		http://gtk-sharp.sourceforge.net/
@@ -115,6 +115,31 @@ rm -rf $RPM_BUILD_ROOT
 %{_prefix}/lib/mono/gac/gnome-sharp
 %{_prefix}/lib/mono/gac/gnome-vfs-sharp
 
+%{_prefix}/lib/mono/gac/policy.2.4.art-sharp
+%{_prefix}/lib/mono/gac/policy.2.4.gconf-sharp-peditors
+%{_prefix}/lib/mono/gac/policy.2.4.gconf-sharp
+%{_prefix}/lib/mono/gac/policy.2.4.gnome-vfs-sharp
+
+%{_prefix}/lib/mono/gac/policy.2.6.art-sharp
+%{_prefix}/lib/mono/gac/policy.2.6.gconf-sharp-peditors
+%{_prefix}/lib/mono/gac/policy.2.6.gconf-sharp
+%{_prefix}/lib/mono/gac/policy.2.6.gnome-vfs-sharp
+
+%{_prefix}/lib/mono/gac/policy.2.8.art-sharp
+%{_prefix}/lib/mono/gac/policy.2.8.gconf-sharp-peditors
+%{_prefix}/lib/mono/gac/policy.2.8.gconf-sharp
+%{_prefix}/lib/mono/gac/policy.2.8.gnome-vfs-sharp
+
+%{_prefix}/lib/mono/gac/policy.2.16.art-sharp
+%{_prefix}/lib/mono/gac/policy.2.16.gconf-sharp-peditors
+%{_prefix}/lib/mono/gac/policy.2.16.gconf-sharp
+%{_prefix}/lib/mono/gac/policy.2.16.gnome-vfs-sharp
+
+%{_prefix}/lib/mono/gac/policy.2.20.art-sharp
+%{_prefix}/lib/mono/gac/policy.2.20.gconf-sharp-peditors
+%{_prefix}/lib/mono/gac/policy.2.20.gconf-sharp
+%{_prefix}/lib/mono/gac/policy.2.20.gnome-vfs-sharp
+
 %files devel
 %defattr(644,root,root,755)
 %{_prefix}/lib/mono/gtk-sharp-2.0/art-sharp.dll
@@ -122,6 +147,31 @@ rm -rf $RPM_BUILD_ROOT
 %{_prefix}/lib/mono/gtk-sharp-2.0/gconf-sharp-peditors.dll
 %{_prefix}/lib/mono/gtk-sharp-2.0/gnome-sharp.dll
 %{_prefix}/lib/mono/gtk-sharp-2.0/gnome-vfs-sharp.dll
+
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.4.art-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.4.gconf-sharp-peditors.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.4.gconf-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.4.gnome-vfs-sharp.dll
+
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.6.art-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.6.gconf-sharp-peditors.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.6.gconf-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.6.gnome-vfs-sharp.dll
+
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.8.art-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.8.gconf-sharp-peditors.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.8.gconf-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.8.gnome-vfs-sharp.dll
+
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.16.art-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.16.gconf-sharp-peditors.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.16.gconf-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.16.gnome-vfs-sharp.dll
+
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.20.art-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.20.gconf-sharp-peditors.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.20.gconf-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.20.gnome-vfs-sharp.dll
 
 %{_datadir}/gapi-2.0/art-api.xml
 %{_datadir}/gapi-2.0/gnome-api.xml
