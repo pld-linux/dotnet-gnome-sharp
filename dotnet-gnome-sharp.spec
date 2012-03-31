@@ -6,7 +6,7 @@ Summary:	.NET language bindings for GNOME
 Summary(pl.UTF-8):	Wiązania GNOME dla .NET
 Name:		dotnet-gnome-sharp
 Version:	2.24.2
-Release:	2
+Release:	3
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-sharp/2.24/gnome-sharp-%{version}.tar.bz2
@@ -27,8 +27,11 @@ BuildRequires:	mono-csharp >= 1.1.16.1
 BuildRequires:	monodoc >= 1.1.16
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(monoautodeps)
+Requires:	GConf2-libs
 Requires:	gnome-vfs2-libs >= 2.24.0
 Requires:	libart_lgpl >= 2.3.20
+Requires:	libgnomecanvas >= 2.20.0
+Requires:	libgnomeui >= 2.24.0
 Requires:	mono >= 1.1.16.1
 Obsoletes:	dotnet-gtk-sharp2-gnome
 Obsoletes:	gtk-sharp2
