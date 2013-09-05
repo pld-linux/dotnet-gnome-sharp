@@ -1,7 +1,10 @@
 #
-%include	/usr/lib/rpm/macros.mono
-%include	/usr/lib/rpm/macros.perl
+# Conditional build:
+%bcond_without	libart		# libart_lgpl binding
+%bcond_without	gnomevfs	# gnome-vfs2 binding
+%bcond_without	gnomeui		# gnome (libgnomecanvas+libgnomeui) binding
 #
+%include	/usr/lib/rpm/macros.mono
 Summary:	.NET language bindings for GNOME
 Summary(pl.UTF-8):	Wiązania GNOME dla .NET
 Name:		dotnet-gnome-sharp
@@ -16,22 +19,24 @@ Patch1:		%{name}-mint.patch
 URL:		http://gtk-sharp.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
+# gtk-sharp-2.0, glade-sharp-2.0
 BuildRequires:	dotnet-gtk-sharp2-devel >= 2.12.2
-BuildRequires:	gnome-vfs2-devel >= 2.24.0
-BuildRequires:	gtk+2-devel >= 2:2.14.0
-BuildRequires:	libart_lgpl-devel >= 2.3.20
-BuildRequires:	libgnomecanvas-devel >= 2.20.0
-BuildRequires:	libgnomeui-devel >= 2.24.0
+%{?with_gnomevfs:BuildRequires:	gnome-vfs2-devel >= 2.24.0}
+%{?with_gnomeui:BuildRequires:	gtk+2-devel >= 2:2.14.0}
+%{?with_libart:BuildRequires:	libart_lgpl-devel >= 2.3.20}
+%{?with_gnomeui:BuildRequires:	libgnomecanvas-devel >= 2.20.0}
+%{?with_gnomeui:BuildRequires:	libgnomeui-devel >= 2.24.0}
 BuildRequires:	libtool
 BuildRequires:	mono-csharp >= 1.1.16.1
 BuildRequires:	monodoc >= 1.1.16
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(monoautodeps)
 Requires:	GConf2-libs
-Requires:	gnome-vfs2-libs >= 2.24.0
-Requires:	libart_lgpl >= 2.3.20
-Requires:	libgnomecanvas >= 2.20.0
-Requires:	libgnomeui >= 2.24.0
+%{?with_gnomevfs:Requires:	gnome-vfs2-libs >= 2.24.0}
+%{?with_gnomeui:Requires:	gtk+2 >= 2:2.14.0}
+%{?with_libart:Requires:	libart_lgpl >= 2.3.20}
+%{?with_gnomeui:Requires:	libgnomecanvas >= 2.20.0}
+%{?with_gnomeui:Requires:	libgnomeui >= 2.24.0}
 Requires:	mono >= 1.1.16.1
 Obsoletes:	dotnet-gtk-sharp2-gnome
 Obsoletes:	gtk-sharp2
@@ -92,7 +97,7 @@ Biblioteki statyczne gnome-sharp.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{perl_vendorlib},%{_examplesdir}/%{name}-%{version}}
+install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
@@ -108,85 +113,95 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/gconfsharp2-schemagen
-%attr(755,root,root) %{_libdir}/libgnomesharpglue-2.so
 %attr(755,root,root) %{_prefix}/lib/gtk-sharp-2.0/gconfsharp-schemagen.exe
-%{_libdir}/libgnomesharpglue-2.la
-%{_prefix}/lib/mono/gac/art-sharp
+
 %{_prefix}/lib/mono/gac/gconf-sharp
+%{_prefix}/lib/mono/gac/policy.2.4.gconf-sharp
+%{_prefix}/lib/mono/gac/policy.2.6.gconf-sharp
+%{_prefix}/lib/mono/gac/policy.2.8.gconf-sharp
+%{_prefix}/lib/mono/gac/policy.2.16.gconf-sharp
+%{_prefix}/lib/mono/gac/policy.2.20.gconf-sharp
+
+%if %{with libart}
+%{_prefix}/lib/mono/gac/art-sharp
+%{_prefix}/lib/mono/gac/policy.2.4.art-sharp
+%{_prefix}/lib/mono/gac/policy.2.6.art-sharp
+%{_prefix}/lib/mono/gac/policy.2.8.art-sharp
+%{_prefix}/lib/mono/gac/policy.2.16.art-sharp
+%{_prefix}/lib/mono/gac/policy.2.20.art-sharp
+%endif
+
+%if %{with gnomeui}
+%attr(755,root,root) %{_libdir}/libgnomesharpglue-2.so
+%{_libdir}/libgnomesharpglue-2.la
 %{_prefix}/lib/mono/gac/gconf-sharp-peditors
 %{_prefix}/lib/mono/gac/gnome-sharp
-%{_prefix}/lib/mono/gac/gnome-vfs-sharp
-
-%{_prefix}/lib/mono/gac/policy.2.4.art-sharp
 %{_prefix}/lib/mono/gac/policy.2.4.gconf-sharp-peditors
-%{_prefix}/lib/mono/gac/policy.2.4.gconf-sharp
-%{_prefix}/lib/mono/gac/policy.2.4.gnome-vfs-sharp
-
-%{_prefix}/lib/mono/gac/policy.2.6.art-sharp
 %{_prefix}/lib/mono/gac/policy.2.6.gconf-sharp-peditors
-%{_prefix}/lib/mono/gac/policy.2.6.gconf-sharp
-%{_prefix}/lib/mono/gac/policy.2.6.gnome-vfs-sharp
-
-%{_prefix}/lib/mono/gac/policy.2.8.art-sharp
 %{_prefix}/lib/mono/gac/policy.2.8.gconf-sharp-peditors
-%{_prefix}/lib/mono/gac/policy.2.8.gconf-sharp
-%{_prefix}/lib/mono/gac/policy.2.8.gnome-vfs-sharp
-
-%{_prefix}/lib/mono/gac/policy.2.16.art-sharp
 %{_prefix}/lib/mono/gac/policy.2.16.gconf-sharp-peditors
-%{_prefix}/lib/mono/gac/policy.2.16.gconf-sharp
-%{_prefix}/lib/mono/gac/policy.2.16.gnome-vfs-sharp
-
-%{_prefix}/lib/mono/gac/policy.2.20.art-sharp
 %{_prefix}/lib/mono/gac/policy.2.20.gconf-sharp-peditors
-%{_prefix}/lib/mono/gac/policy.2.20.gconf-sharp
+%endif
+
+%if %{with gnomevfs}
+%{_prefix}/lib/mono/gac/gnome-vfs-sharp
+%{_prefix}/lib/mono/gac/policy.2.4.gnome-vfs-sharp
+%{_prefix}/lib/mono/gac/policy.2.6.gnome-vfs-sharp
+%{_prefix}/lib/mono/gac/policy.2.8.gnome-vfs-sharp
+%{_prefix}/lib/mono/gac/policy.2.16.gnome-vfs-sharp
 %{_prefix}/lib/mono/gac/policy.2.20.gnome-vfs-sharp
+%endif
 
 %files devel
 %defattr(644,root,root,755)
-%{_prefix}/lib/mono/gtk-sharp-2.0/art-sharp.dll
 %{_prefix}/lib/mono/gtk-sharp-2.0/gconf-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.4.gconf-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.6.gconf-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.8.gconf-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.16.gconf-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.20.gconf-sharp.dll
+%{_pkgconfigdir}/gconf-sharp-2.0.pc
+%{_examplesdir}/%{name}-%{version}
+
+%if %{with libart}
+%{_prefix}/lib/mono/gtk-sharp-2.0/art-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.4.art-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.6.art-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.8.art-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.16.art-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.20.art-sharp.dll
+%{_datadir}/gapi-2.0/art-api.xml
+%{_pkgconfigdir}/art-sharp-2.0.pc
+%endif
+
+%if %{with gnomeui}
 %{_prefix}/lib/mono/gtk-sharp-2.0/gconf-sharp-peditors.dll
 %{_prefix}/lib/mono/gtk-sharp-2.0/gnome-sharp.dll
-%{_prefix}/lib/mono/gtk-sharp-2.0/gnome-vfs-sharp.dll
-
-%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.4.art-sharp.dll
 %{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.4.gconf-sharp-peditors.dll
-%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.4.gconf-sharp.dll
-%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.4.gnome-vfs-sharp.dll
-
-%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.6.art-sharp.dll
 %{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.6.gconf-sharp-peditors.dll
-%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.6.gconf-sharp.dll
-%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.6.gnome-vfs-sharp.dll
-
-%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.8.art-sharp.dll
 %{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.8.gconf-sharp-peditors.dll
-%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.8.gconf-sharp.dll
-%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.8.gnome-vfs-sharp.dll
-
-%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.16.art-sharp.dll
 %{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.16.gconf-sharp-peditors.dll
-%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.16.gconf-sharp.dll
-%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.16.gnome-vfs-sharp.dll
-
-%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.20.art-sharp.dll
 %{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.20.gconf-sharp-peditors.dll
-%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.20.gconf-sharp.dll
-%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.20.gnome-vfs-sharp.dll
-
-%{_datadir}/gapi-2.0/art-api.xml
 %{_datadir}/gapi-2.0/gnome-api.xml
-%{_datadir}/gapi-2.0/gnome-vfs-api.xml
-
-%{_examplesdir}/%{name}-%{version}
-%{_pkgconfigdir}/art-sharp-2.0.pc
-%{_pkgconfigdir}/gconf-sharp-2.0.pc
 %{_pkgconfigdir}/gnome-sharp-2.0.pc
 %{_pkgconfigdir}/gconf-sharp-peditors-2.0.pc
-%{_pkgconfigdir}/gnome-vfs-sharp-2.0.pc
+%endif
 
+%if %{with gnomevfs}
+%{_prefix}/lib/mono/gtk-sharp-2.0/gnome-vfs-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.4.gnome-vfs-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.6.gnome-vfs-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.8.gnome-vfs-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.16.gnome-vfs-sharp.dll
+%{_prefix}/lib/mono/gtk-sharp-2.0/policy.2.20.gnome-vfs-sharp.dll
+%{_datadir}/gapi-2.0/gnome-vfs-api.xml
+%{_pkgconfigdir}/gnome-vfs-sharp-2.0.pc
+%endif
+
+%if %{with gnomeui}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libgnomesharpglue-2.a
+%endif
