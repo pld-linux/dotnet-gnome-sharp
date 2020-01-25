@@ -4,7 +4,6 @@
 %bcond_without	gnomevfs	# gnome-vfs2 binding
 %bcond_without	gnomeui		# gnome (libgnomecanvas+libgnomeui) binding
 #
-%include	/usr/lib/rpm/macros.mono
 Summary:	GNOME# - .NET language bindings for GNOME libraries
 Summary(pl.UTF-8):	GNOME# - wiązania .NET do bibliotek GNOME
 Name:		dotnet-gnome-sharp
