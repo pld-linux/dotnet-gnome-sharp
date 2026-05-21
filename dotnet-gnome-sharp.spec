@@ -6,9 +6,10 @@
 #
 Summary:	GNOME# - .NET language bindings for GNOME libraries
 Summary(pl.UTF-8):	GNOME# - wiązania .NET do bibliotek GNOME
+%undefine	_debugsource_packages
 Name:		dotnet-gnome-sharp
 Version:	2.24.5
-Release:	3
+Release:	4
 License:	LGPL v2+
 Group:		Libraries
 #Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-sharp/2.24/gnome-sharp-%{version}.tar.bz2
